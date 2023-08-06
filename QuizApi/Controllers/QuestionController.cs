@@ -15,6 +15,7 @@ namespace QuizAPI.Controllers
     public class QuestionController : ControllerBase
     {
         private readonly QuizDbContext _context;
+        private readonly Random _rand = new Random();
 
         public QuestionController(QuizDbContext context)
         {
@@ -33,7 +34,8 @@ namespace QuizAPI.Controllers
                      ImageName = x.ImageName,
                      Options = new string[] { x.Option1, x.Option2, x.Option3, x.Option4 }
                  })
-                 .OrderBy(y => Guid.NewGuid())
+                 .OrderBy(_ => Guid.NewGuid())
+                 //.OrderBy(y => Guid.NewGuid())
                  .Take(5)
                  ).ToListAsync();
 
@@ -125,4 +127,6 @@ namespace QuizAPI.Controllers
             return _context.Questions.Any(e => e.QuestionId == id);
         }
     }
+    
 }
+

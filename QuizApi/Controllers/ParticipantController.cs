@@ -45,7 +45,7 @@ namespace QuizAPI.Controllers
         // PUT: api/Participant/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutParticipant(int id, Participant _participantResult)
+        public async Task<IActionResult> PutParticipant(int id, ParticipantResult _participantResult)
         {
             if (id != _participantResult.ParticipantId)
             {

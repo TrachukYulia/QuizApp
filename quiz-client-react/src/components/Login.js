@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardContent, TextField, Typography } from '@mui/material'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Center from './Center'
 // import useForm from '../hooks';
 import { createAPIEndpoint, ENDPOINTS } from '../api';
@@ -13,7 +13,7 @@ const getFreshModel = () => ({
 })
 export default function Login() {
     // const [value.setValues]  = useState(){
-    const { context, setContext } = useStateContext();
+    const { context, setContext, resetContext } = useStateContext();
     // }
     const navigate = useNavigate()
     
@@ -25,6 +25,10 @@ export default function Login() {
         handleInputChange
     } = useForm(getFreshModel);
     
+
+    useEffect (() => {
+       resetContext()
+    }, [])
     const login = e => {
         e.preventDefault();
         if (validate())
