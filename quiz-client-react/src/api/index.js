@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL =  'https://quiz-app-aolm.onrender.com'//'http://localhost:5241/';
+export const BASE_URL =  'https://quiz-8h8l.onrender.com'//'https://quiz-app-aolm.onrender.com'//'http://localhost:5241/';
 
 export const ENDPOINTS = {
     participant: 'participant',
