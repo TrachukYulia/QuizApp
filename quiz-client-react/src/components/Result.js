@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useStateContext } from '../hooks/useStateContext'
 import { ENDPOINTS, createAPIEndpoint } from '../api'
-import { Box, Button, Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Alert, Box, Button, Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { getFormatedTime } from '../helper'
 import { green } from '@mui/material/colors'
 import { useNavigate } from 'react-router-dom'
+import Answer from './Answer'
 
 export default function Result() {
   const { context, setContext } = useStateContext()
   const [ score, setScore ] = useState(0)
   const [qnAnswers, setQnAnswers ] = useState([])
+  const [showAlert, setShowAlert] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -48,11 +50,18 @@ export default function Result() {
       score: score,
       timeTaken: context.timeTaken
     })
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      setShowAlert(true)
+      setTimeout(() => {
+        
+      }, 4000);
+    })
     .catch(err => console.log(err))
 
   }
   return (
+    <>
     <Card  sx={{ mt: 5, display: 'flex', width: '100%', maxWidth: 640, mx: 'auto' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           <CardContent   sx={{ flex: '1 0 auto', textAlign: 'center' }}>
@@ -81,6 +90,15 @@ export default function Result() {
               onClick={restart}>
               Re-try
             </Button>
+            <Alert 
+            severity="success"
+            variant = "string"
+            sx = {{
+              width: '60%',
+              m: 'auto',
+              visibility: showAlert ? 'visible' : 'hidden'
+            }}
+            >Score updated!</Alert>
             </CardContent>
           </Box>
           <CardMedia
@@ -89,5 +107,7 @@ export default function Result() {
           image="./result.png"
         />
         </Card>
+        <Answer qnAnswers ={qnAnswers} /> 
+        </>
   )
 }
