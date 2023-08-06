@@ -24,7 +24,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(options =>
-options.WithOrigins("http://localhost:3000")
+options.WithOrigins("https://quiz-8h8l.onrender.com/")
 .AllowAnyHeader()
 .AllowAnyMethod());
 
