@@ -5,18 +5,21 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Result from './components/Result';
 import Quiz from './components/Quiz';
 import Layout from './components/Layout';
+import Auth from './components/Auth';
 
 function App() {
   return (
-<BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/" element={<Layout />} >
-           <Route path="/quiz" element={<Quiz />} />
-           <Route path="/result" element={<Result />} />
-        </Route> 
+        <Route element={<Auth />} >
+          <Route path="/" element={<Layout />} >
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/result" element={<Result />} />
+          </Route>
+        </Route>
       </Routes>
-      </BrowserRouter>
+    </BrowserRouter>
 
   );
 }

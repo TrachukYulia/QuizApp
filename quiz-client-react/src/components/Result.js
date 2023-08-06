@@ -94,7 +94,7 @@ export default function Result() {
             severity="success"
             variant = "string"
             sx = {{
-              width: '60%',
+              width: '45%',
               m: 'auto',
               visibility: showAlert ? 'visible' : 'hidden'
             }}
