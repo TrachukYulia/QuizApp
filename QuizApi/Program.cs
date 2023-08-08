@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using QuizApi.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder();
 
 // Add services to the container.
 
@@ -24,7 +24,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(options =>
-options.WithOrigins("https://quiz-8h8l.onrender.com/")
+options.WithOrigins("localhost:3000/")
 .AllowAnyHeader()
 .AllowAnyMethod());
 
